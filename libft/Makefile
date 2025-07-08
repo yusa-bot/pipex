@@ -5,49 +5,43 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ayusa <ayusa@student.42tokyo.jp>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/07/08 13:28:53 by ayusa             #+#    #+#              #
-#    Updated: 2025/07/08 13:36:05 by ayusa            ###   ########.fr        #
+#    Created: 2025/05/02 00:02:40 by ayusa             #+#    #+#              #
+#    Updated: 2025/07/08 22:58:58 by ayusa            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = pipex
+NAME = libft.a
 
-SRCS = $(wildcard ./*.c)
+SRCS = ft_atoi.c ft_isdigit.c ft_memset.c ft_strchr.c \
+       ft_strmapi.c ft_toupper.c ft_atol.c ft_isprint.c \
+       ft_putchar_fd.c ft_strdup.c ft_strncmp.c ft_uitoa.c \
+       ft_bzero.c ft_itoa.c ft_putendl_fd.c ft_striteri.c \
+       ft_strnstr.c ft_calloc.c ft_memchr.c ft_putnbr_fd.c \
+       ft_strjoin.c ft_strrchr.c ft_isalnum.c ft_memcmp.c \
+       ft_putstr_fd.c ft_strlcat.c ft_strtrim.c ft_isalpha.c \
+       ft_memcpy.c ft_putstrn_fd.c ft_strlcpy.c ft_substr.c \
+       ft_isascii.c ft_memmove.c ft_split.c ft_strlen.c \
+       ft_tolower.c ft_split_c.c
 OBJS = $(SRCS:.c=.o)
+
+CC      = cc
+CFLAGS  = -Wall -Wextra -Werror
+AR      = ar rcs
+RM      = rm -f
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-LIBFT_DIR = libft
-FT_PRINTF_DIR = ft_printf
-
-LIBFT = $(LIBFT_DIR)/libft.a
-FT_PRINTF = $(FT_PRINTF_DIR)/ft_printf.a
-
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-RM = rm -f
-
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(FT_PRINTF) $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(FT_PRINTF) $(LIBFT)
-
-$(FT_PRINTF): $(LIBFT)
-	make -C $(FT_PRINTF_DIR)
-
-$(LIBFT):
-	make -C $(LIBFT_DIR)
+$(NAME): $(OBJS)
+	$(AR) $(NAME) $(OBJS)
 
 clean:
 	$(RM) $(OBJS)
-	make -C $(LIBFT_DIR) clean
-	make -C $(FT_PRINTF_DIR) clean
 
 fclean: clean
 	$(RM) $(NAME)
-	make -C $(LIBFT_DIR) fclean
-	make -C $(FT_PRINTF_DIR) fclean
 
 re: fclean all
 

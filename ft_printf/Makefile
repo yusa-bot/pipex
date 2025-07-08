@@ -5,50 +5,38 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ayusa <ayusa@student.42tokyo.jp>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/07/08 13:28:53 by ayusa             #+#    #+#              #
-#    Updated: 2025/07/08 13:36:05 by ayusa            ###   ########.fr        #
+#    Created: 2025/05/19 17:35:53 by ayusa             #+#    #+#              #
+#    Updated: 2025/07/08 13:51:25 by ayusa            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = pipex
+NAME = ft_printf.a
 
-SRCS = $(wildcard ./*.c)
+SRCS = ft_check_char.c ft_print.c ft_printf.c ft_print_s.c \
+       ft_print_x.c ft_parse.c ft_print_c.c ft_print_u.c \
+       ft_print_x_util.c ft_parse_util.c ft_print_d_i.c ft_print_p.c \
+       ft_print_util.c
 OBJS = $(SRCS:.c=.o)
+
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+AR = ar rcs
+RM = rm -f
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-LIBFT_DIR = libft
-FT_PRINTF_DIR = ft_printf
-
-LIBFT = $(LIBFT_DIR)/libft.a
-FT_PRINTF = $(FT_PRINTF_DIR)/ft_printf.a
-
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-RM = rm -f
-
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(FT_PRINTF) $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(FT_PRINTF) $(LIBFT)
-
-$(FT_PRINTF): $(LIBFT)
-	make -C $(FT_PRINTF_DIR)
-
-$(LIBFT):
-	make -C $(LIBFT_DIR)
+$(NAME): $(OBJS)
+	$(AR) $(NAME) $(OBJS)
 
 clean:
 	$(RM) $(OBJS)
-	make -C $(LIBFT_DIR) clean
-	make -C $(FT_PRINTF_DIR) clean
 
 fclean: clean
 	$(RM) $(NAME)
-	make -C $(LIBFT_DIR) fclean
-	make -C $(FT_PRINTF_DIR) fclean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
