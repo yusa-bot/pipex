@@ -6,7 +6,7 @@
 /*   By: ayusa <ayusa@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 13:28:59 by ayusa             #+#    #+#             */
-/*   Updated: 2025/07/08 22:56:47 by ayusa            ###   ########.fr       */
+/*   Updated: 2025/07/09 15:44:31 by ayusa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	init_commands(t_pipex *px, char **av);
 void	perror_exit(char *msg);
 void	valid_av(int ac, char **av);
 void	wait_close(t_pipex *px);
-
+void	free_and_exit(t_pipex *px, char *msg);
+void	free_split(char **ag);
 
 #endif

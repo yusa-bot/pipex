@@ -6,7 +6,7 @@
 /*   By: ayusa <ayusa@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 14:49:40 by ayusa             #+#    #+#             */
-/*   Updated: 2025/07/08 22:41:43 by ayusa            ###   ########.fr       */
+/*   Updated: 2025/07/09 14:55:57 by ayusa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ int	count_words(const char *str, char c)
 	while (str[i] != '\0')
 	{
 		while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
-				|| str[i] == c)
+			|| str[i] == c)
 			i++;
 		if (str[i] != '\0')
 			count++;
 		while (str[i] != '\0' && str[i] != ' ' && str[i] != '\t'
-				&& str[i] != '\n' && str[i] != c)
+			&& str[i] != '\n' && str[i] != c)
 			i++;
 	}
 	return (count);
@@ -53,7 +53,7 @@ int	find_next_word(const char *str, int *start, int *end, char c)
 		i++;
 	*start = i;
 	while (str[i] != '\0' && str[i] != ' ' && str[i] != '\t' && str[i] != '\n'
-			&& str[i] != c)
+		&& str[i] != c)
 		i++;
 	*end = i;
 	return (*start < *end);

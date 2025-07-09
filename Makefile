@@ -6,13 +6,13 @@
 #    By: ayusa <ayusa@student.42tokyo.jp>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/08 13:28:53 by ayusa             #+#    #+#              #
-#    Updated: 2025/07/08 13:36:05 by ayusa            ###   ########.fr        #
+#    Updated: 2025/07/09 15:02:53 by ayusa            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
 
-SRCS = $(wildcard ./*.c)
+SRCS = main.c access_path.c pipex_utils.c
 OBJS = $(SRCS:.c=.o)
 
 %.o: %.c
